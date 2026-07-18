@@ -87,30 +87,30 @@ interface SummaryCardProps {
 function SummaryCard({ icon, eyebrow, value, note, accent }: SummaryCardProps) {
   return (
     <article
-      className={`relative overflow-hidden rounded-3xl border p-5 shadow-[0_18px_55px_rgba(5,20,34,0.08)] transition-transform hover:-translate-y-0.5 ${
+      className={`relative overflow-hidden rounded-2xl border p-3.5 shadow-[0_18px_55px_rgba(5,20,34,0.08)] transition-transform hover:-translate-y-0.5 sm:rounded-3xl sm:p-5 ${
         accent
           ? "border-cyan-200/80 bg-gradient-to-br from-cyan-50 to-white"
           : "border-slate-200/80 bg-white"
       }`}
     >
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <p className="text-xs font-semibold tracking-[0.16em] text-slate-500 uppercase">
-            {eyebrow}
-          </p>
-          <p className="mt-3 text-2xl font-bold tracking-tight text-slate-950">
-            {value}
-          </p>
-        </div>
-        <span
-          className={`grid size-11 shrink-0 place-items-center rounded-2xl ${
-            accent ? "bg-cyan-500 text-white" : "bg-slate-100 text-slate-600"
-          }`}
-        >
-          {icon}
-        </span>
+      <div className="min-w-0">
+        <p className="pr-10 text-[10px] font-semibold tracking-[0.12em] text-slate-500 uppercase sm:pr-12 sm:text-xs sm:tracking-[0.16em]">
+          {eyebrow}
+        </p>
+        <p className="mt-2 truncate text-base font-bold tracking-tight text-slate-950 sm:mt-3 sm:text-2xl">
+          {value}
+        </p>
       </div>
-      <p className="mt-3 text-sm leading-6 text-slate-500">{note}</p>
+      <span
+        className={`absolute top-3.5 right-3.5 grid size-9 place-items-center rounded-xl sm:top-5 sm:right-5 sm:size-11 sm:rounded-2xl ${
+          accent ? "bg-cyan-500 text-white" : "bg-slate-100 text-slate-600"
+        }`}
+      >
+        {icon}
+      </span>
+      <p className="mt-3 hidden text-sm leading-6 text-slate-500 sm:block">
+        {note}
+      </p>
     </article>
   );
 }
@@ -363,7 +363,7 @@ export function App() {
               </div>
               <div className="mt-4">
                 <div
-                  className="grid w-full grid-cols-6 gap-1.5 sm:min-w-0 sm:flex-1"
+                  className="grid w-full grid-cols-3 gap-2 sm:min-w-0 sm:flex-1 sm:grid-cols-6 sm:gap-1.5"
                   aria-label="常用金额"
                 >
                   {QUICK_AMOUNTS.map((amount) => {
@@ -375,7 +375,7 @@ export function App() {
                         aria-label={`快速选择 ${amount} 美元`}
                         aria-pressed={selected}
                         onClick={() => setAmountText(String(amount))}
-                        className={`min-w-0 whitespace-nowrap rounded-md border px-1.5 py-1 text-[10px] font-bold tabular-nums transition ${
+                        className={`min-w-0 whitespace-nowrap rounded-lg border px-2 py-2 text-xs font-bold tabular-nums transition sm:rounded-md sm:px-1.5 sm:py-1 sm:text-[10px] ${
                           selected
                             ? "border-cyan-300/70 bg-cyan-300/20 text-cyan-200 shadow-sm shadow-cyan-400/10"
                             : "border-white/10 bg-white/5 text-slate-300 hover:border-cyan-300/40 hover:bg-cyan-300/10 hover:text-cyan-100"
@@ -403,7 +403,7 @@ export function App() {
           </div>
         )}
 
-        <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <section className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4">
           <SummaryCard
             icon={<ShieldCheck className="size-5" />}
             eyebrow="当前最优"
@@ -615,11 +615,38 @@ export function App() {
                             </p>
                           </div>
                         </div>
-                        {isBest && (
-                          <span className="rounded-full bg-cyan-100 px-2.5 py-1 text-[10px] font-bold text-cyan-800">
-                            当前最优
-                          </span>
-                        )}
+                        <div
+                          className="shrink-0 text-right"
+                          aria-label={`较最优 ${
+                            comparison.differenceFromBestCny === 0
+                              ? "基准"
+                              : comparison.differenceFromBestCny !== null
+                                ? cnyFormatter.format(
+                                    comparison.differenceFromBestCny,
+                                  )
+                                : "待补充"
+                          }`}
+                        >
+                          <p className="text-[10px] font-medium text-slate-400">
+                            较最优
+                          </p>
+                          {comparison.differenceFromBestCny === 0 ? (
+                            <p className="mt-1 rounded-full bg-cyan-100 px-2.5 py-1 text-[10px] font-bold text-cyan-800">
+                              基准
+                            </p>
+                          ) : comparison.differenceFromBestCny !== null ? (
+                            <p className="mt-1 text-sm font-bold text-rose-600">
+                              +
+                              {cnyFormatter.format(
+                                comparison.differenceFromBestCny,
+                              )}
+                            </p>
+                          ) : (
+                            <p className="mt-1 text-xs font-semibold text-amber-700">
+                              待补充
+                            </p>
+                          )}
+                        </div>
                       </div>
 
                       <div className="mt-4">
@@ -649,10 +676,11 @@ export function App() {
                           <dd className="mt-1 font-semibold">
                             {comparison.handlingFeeCny !== null &&
                             comparison.telegraphFeeCny !== null
-                              ? cnyFormatter.format(
-                                  comparison.handlingFeeCny +
-                                    comparison.telegraphFeeCny,
-                                )
+                              ? `${cnyFormatter.format(
+                                  comparison.handlingFeeCny,
+                                )} + ${cnyFormatter.format(
+                                  comparison.telegraphFeeCny,
+                                )}`
                               : "待补充"}
                           </dd>
                         </div>

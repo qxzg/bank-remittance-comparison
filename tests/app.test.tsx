@@ -131,6 +131,17 @@ describe("comparison UI", () => {
     ).toHaveAttribute("aria-pressed", "true");
   });
 
+  it("shows the difference from the best option on mobile cards", async () => {
+    render(<App />);
+    await screen.findAllByText("乙银行");
+
+    expect(screen.getByLabelText("较最优 基准")).toBeInTheDocument();
+    expect(screen.getByLabelText("较最优 ¥120.00")).toHaveTextContent(
+      "+¥120.00",
+    );
+    expect(screen.getByText("¥70.00 + ¥100.00")).toBeInTheDocument();
+  });
+
   it("reloads the KV-backed rate path from the refresh button", async () => {
     const user = userEvent.setup();
     render(<App />);
