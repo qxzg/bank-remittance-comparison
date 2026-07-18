@@ -21,10 +21,69 @@ async function readRows(
   response: Response,
   tableId: string,
   lastCellIndex: number,
+  rowNeedle?: string,
 ): Promise<string[][]> {
+  const idMarker = `id="${tableId}"`;
+  const reader = response.body?.getReader();
+  if (!reader) return [];
+
+  const decoder = new TextDecoder();
+  let fragment = "";
+  let tableFound = false;
+
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      fragment += decoder.decode(value, { stream: !done });
+
+      if (!tableFound) {
+        const idIndex = fragment.indexOf(idMarker);
+        if (idIndex >= 0) {
+          const tableStart = fragment.lastIndexOf("<table", idIndex);
+          if (tableStart >= 0) {
+            fragment = fragment.slice(tableStart);
+            tableFound = true;
+          }
+        } else if (fragment.length > 2_048) {
+          fragment = fragment.slice(-2_048);
+        }
+      }
+
+      if (tableFound) {
+        const tableClose = fragment.indexOf("</table>");
+        if (tableClose >= 0) {
+          fragment = fragment.slice(0, tableClose + "</table>".length);
+          await reader.cancel();
+          break;
+        }
+      }
+
+      if (done) break;
+    }
+  } finally {
+    reader.releaseLock();
+  }
+
+  if (!tableFound || !fragment.endsWith("</table>")) return [];
+
+  if (rowNeedle) {
+    const needleIndex = fragment.indexOf(rowNeedle);
+    const rowStart =
+      needleIndex < 0 ? -1 : fragment.lastIndexOf("<tr", needleIndex);
+    const rowClose =
+      needleIndex < 0 ? -1 : fragment.indexOf("</tr>", needleIndex);
+    if (rowStart < 0 || rowClose < 0) return [];
+    fragment = `<table id="${tableId}">${fragment.slice(
+      rowStart,
+      rowClose + "</tr>".length,
+    )}</table>`;
+  }
+
+  const tableResponse = new Response(fragment, {
+    headers: { "Content-Type": "text/html; charset=utf-8" },
+  });
   const rows: string[][] = [];
   let insideTable = false;
-  let tableComplete = false;
   let currentCells: string[] | null = null;
   let cellIndex = -1;
   const transformed = new HTMLRewriter()
@@ -34,7 +93,6 @@ async function readRows(
         insideTable = true;
         table.onEndTag(() => {
           insideTable = false;
-          tableComplete = true;
           currentCells = null;
         });
       },
@@ -62,19 +120,9 @@ async function readRows(
         }
       },
     })
-    .transform(response);
+    .transform(tableResponse);
 
-  const reader = transformed.body?.getReader();
-  if (!reader) return [];
-  try {
-    while (!tableComplete) {
-      const { done } = await reader.read();
-      if (done) break;
-    }
-    if (tableComplete) await reader.cancel();
-  } finally {
-    reader.releaseLock();
-  }
+  await transformed.arrayBuffer();
   return rows;
 }
 
@@ -84,11 +132,17 @@ async function parseRatesTable(
   source: RateQuote["source"],
   sourceUrl: string,
   columns: { sell: number; published: number },
+  rowNeedle?: string,
 ): Promise<RateQuote[]> {
   const rates: RateQuote[] = [];
 
   const lastCellIndex = Math.max(columns.sell, columns.published);
-  for (const cells of await readRows(response, tableId, lastCellIndex)) {
+  for (const cells of await readRows(
+    response,
+    tableId,
+    lastCellIndex,
+    rowNeedle,
+  )) {
     const bankName = normalizeBankName(cells[0] ?? "");
     const sellRate = parseNumber(cells[columns.sell] ?? "");
     if (!bankName || sellRate === null) continue;
@@ -127,6 +181,7 @@ export async function parseBeijingBankRateResponse(
     "beijing",
     BEIJING_RATES_URL,
     { sell: 4, published: 6 },
+    "北京银行",
   );
   return rates.find((rate) => rate.bankName === "北京银行") ?? null;
 }

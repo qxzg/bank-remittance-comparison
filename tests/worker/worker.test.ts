@@ -128,24 +128,26 @@ describe("HTMLRewriter rate parsers", () => {
     );
   });
 
-  it("stops consuming transformed output after the target table", async () => {
+  it("cancels the upstream body after reading the target table", async () => {
     const encoder = new TextEncoder();
-    let trailingPulls = 0;
+    let cancelled = false;
     const response = new Response(
       new ReadableStream({
         start(controller) {
           controller.enqueue(encoder.encode(nationalHtml));
         },
         pull(controller) {
-          trailingPulls += 1;
           controller.enqueue(encoder.encode("<div>unused trailing page</div>"));
+        },
+        cancel() {
+          cancelled = true;
         },
       }),
       { headers: { "Content-Type": "text/html; charset=utf-8" } },
     );
 
     expect(await parseNationalRatesResponse(response)).toHaveLength(1);
-    expect(trailingPulls).toBeLessThanOrEqual(1);
+    expect(cancelled).toBe(true);
   });
 });
 
