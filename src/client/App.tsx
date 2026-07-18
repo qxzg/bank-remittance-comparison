@@ -7,6 +7,7 @@ import {
   Check,
   Clock3,
   ExternalLink,
+  GitFork,
   Info,
   Landmark,
   LoaderCircle,
@@ -715,8 +716,22 @@ export function App() {
         </section>
       </main>
 
-      <footer className="border-t border-slate-200 bg-white px-5 py-6 text-center text-xs text-slate-400">
-        第三方数据仅供成本比较，银行柜面及客户端显示价格作为最终交易依据。
+      <footer className="border-t border-slate-200 bg-white px-5 py-6 text-xs text-slate-400">
+        <div className="mx-auto flex max-w-[1440px] flex-col items-center justify-between gap-3 text-center sm:flex-row sm:text-left">
+          <p>
+            第三方数据仅供成本比较，银行柜面及客户端显示价格作为最终交易依据。
+          </p>
+          <a
+            href="https://github.com/qxzg/bank-remittance-comparison"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex shrink-0 items-center gap-1.5 font-semibold text-slate-500 transition hover:text-cyan-700"
+          >
+            <GitFork className="size-4" />
+            GitHub 仓库
+            <ExternalLink className="size-3" />
+          </a>
+        </div>
       </footer>
     </div>
   );

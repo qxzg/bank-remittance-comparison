@@ -155,4 +155,14 @@ describe("comparison UI", () => {
       });
     });
   });
+
+  it("links to the GitHub repository from the footer", async () => {
+    render(<App />);
+    await screen.findAllByText("乙银行");
+
+    expect(screen.getByRole("link", { name: /GitHub 仓库/ })).toHaveAttribute(
+      "href",
+      "https://github.com/qxzg/bank-remittance-comparison",
+    );
+  });
 });
