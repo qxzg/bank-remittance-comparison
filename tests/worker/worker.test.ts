@@ -134,7 +134,9 @@ describe("HTMLRewriter rate parsers", () => {
     const response = new Response(
       new ReadableStream({
         start(controller) {
-          controller.enqueue(encoder.encode(nationalHtml));
+          controller.enqueue(
+            encoder.encode(`${nationalHtml}<div>${"unused".repeat(100_000)}</div>`),
+          );
         },
         pull(controller) {
           controller.enqueue(encoder.encode("<div>unused trailing page</div>"));

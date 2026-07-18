@@ -31,34 +31,48 @@ async function readRows(
   let fragment = "";
   let tableFound = false;
 
+  const appendText = (text: string): boolean => {
+    fragment += text;
+
+    if (!tableFound) {
+      const idIndex = fragment.indexOf(idMarker);
+      if (idIndex >= 0) {
+        const tableStart = fragment.lastIndexOf("<table", idIndex);
+        if (tableStart >= 0) {
+          fragment = fragment.slice(tableStart);
+          tableFound = true;
+        }
+      } else if (fragment.length > 2_048) {
+        fragment = fragment.slice(-2_048);
+      }
+    }
+
+    if (!tableFound) return false;
+    const tableClose = fragment.indexOf("</table>");
+    if (tableClose < 0) return false;
+    fragment = fragment.slice(0, tableClose + "</table>".length);
+    return true;
+  };
+
   try {
+    readLoop:
     while (true) {
       const { done, value } = await reader.read();
-      fragment += decoder.decode(value, { stream: !done });
 
-      if (!tableFound) {
-        const idIndex = fragment.indexOf(idMarker);
-        if (idIndex >= 0) {
-          const tableStart = fragment.lastIndexOf("<table", idIndex);
-          if (tableStart >= 0) {
-            fragment = fragment.slice(tableStart);
-            tableFound = true;
+      if (value) {
+        for (let offset = 0; offset < value.length; offset += 8_192) {
+          const chunk = value.subarray(offset, offset + 8_192);
+          if (appendText(decoder.decode(chunk, { stream: true }))) {
+            await reader.cancel();
+            break readLoop;
           }
-        } else if (fragment.length > 2_048) {
-          fragment = fragment.slice(-2_048);
         }
       }
 
-      if (tableFound) {
-        const tableClose = fragment.indexOf("</table>");
-        if (tableClose >= 0) {
-          fragment = fragment.slice(0, tableClose + "</table>".length);
-          await reader.cancel();
-          break;
-        }
+      if (done) {
+        appendText(decoder.decode());
+        break;
       }
-
-      if (done) break;
     }
   } finally {
     reader.releaseLock();
