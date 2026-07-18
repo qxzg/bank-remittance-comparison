@@ -22,15 +22,49 @@ async function readRows(
   tableId: string,
   lastCellIndex: number,
 ): Promise<string[][]> {
-  const html = await response.text();
   const idMarker = `id="${tableId}"`;
-  const idIndex = html.indexOf(idMarker);
-  const tableStart = idIndex < 0 ? -1 : html.lastIndexOf("<table", idIndex);
-  const tableClose = idIndex < 0 ? -1 : html.indexOf("</table>", idIndex);
-  if (tableStart < 0 || tableClose < 0) return [];
+  const reader = response.body?.getReader();
+  if (!reader) return [];
+
+  const decoder = new TextDecoder();
+  let fragment = "";
+  let tableFound = false;
+
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      fragment += decoder.decode(value, { stream: !done });
+
+      if (!tableFound) {
+        const idIndex = fragment.indexOf(idMarker);
+        if (idIndex >= 0) {
+          const tableStart = fragment.lastIndexOf("<table", idIndex);
+          if (tableStart >= 0) {
+            fragment = fragment.slice(tableStart);
+            tableFound = true;
+          }
+        }
+      }
+
+      if (tableFound) {
+        const tableClose = fragment.indexOf("</table>");
+        if (tableClose >= 0) {
+          fragment = fragment.slice(0, tableClose + "</table>".length);
+          await reader.cancel();
+          break;
+        }
+      }
+
+      if (done) break;
+    }
+  } finally {
+    reader.releaseLock();
+  }
+
+  if (!tableFound || !fragment.endsWith("</table>")) return [];
 
   const tableResponse = new Response(
-    html.slice(tableStart, tableClose + "</table>".length),
+    fragment,
     { headers: { "Content-Type": "text/html; charset=utf-8" } },
   );
   const rows: string[][] = [];

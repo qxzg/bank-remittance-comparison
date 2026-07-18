@@ -127,6 +127,28 @@ describe("HTMLRewriter rate parsers", () => {
       expect.objectContaining({ bankId: "bob", sellRateCnyPerUsd: 6.79 }),
     );
   });
+
+  it("cancels the upstream body after reading the target table", async () => {
+    const encoder = new TextEncoder();
+    let cancelled = false;
+    const response = new Response(
+      new ReadableStream({
+        start(controller) {
+          controller.enqueue(encoder.encode(nationalHtml));
+        },
+        pull(controller) {
+          controller.enqueue(encoder.encode("<div>unused trailing page</div>"));
+        },
+        cancel() {
+          cancelled = true;
+        },
+      }),
+      { headers: { "Content-Type": "text/html; charset=utf-8" } },
+    );
+
+    expect(await parseNationalRatesResponse(response)).toHaveLength(1);
+    expect(cancelled).toBe(true);
+  });
 });
 
 describe("scheduled refresh and source fallback", () => {
