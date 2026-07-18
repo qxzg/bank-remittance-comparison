@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "bank-remittance-comparison",
+  "name": "bank-remittance-comparison-test",
   "main": "./src/worker/index.ts",
   "compatibility_date": "2026-07-18",
   "workers_dev": false,
