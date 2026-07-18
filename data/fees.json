@@ -1,0 +1,694 @@
+{
+  "version": 1,
+  "snapshotType": "fixed-local",
+  "sourceUrl": "https://www.kylc.com/bank/fees/tt.html",
+  "capturedAt": "2026-07-18T03:35:58.921Z",
+  "manualOverrides": [
+    "华夏银行手机银行手续费按0.5‰收取，最低20元、最高200元",
+    "招商银行所有客户等级电报费100元",
+    "招商银行普通客户手续费按1‰收取，最低50元、最高280元",
+    "招商银行金卡客户手续费按0.5‰收取，最低50元、最高280元"
+  ],
+  "tiers": [
+    {
+      "id": "boc-0-4e2d-94f6-8d22-5bcc-7ba1-7406",
+      "bankId": "boc",
+      "bankName": "中国银行",
+      "label": "中银财富管理",
+      "feeRule": {
+        "kind": "free",
+        "percent": 0,
+        "minimumCny": 0,
+        "maximumCny": 0
+      },
+      "telegraphFeeUsCny": 0,
+      "rawFeeText": "免费",
+      "rawTelegraphText": "免费",
+      "officialUrl": null,
+      "remarks": "中银财富管理级客户在网点柜台、智能柜台、网上银行和手机银行渠道向境外汇款电报费与手续费全免。\n\n来源：上海分行微信公众号"
+    },
+    {
+      "id": "boc-1-4e2d-94f6-7406-8d22",
+      "bankId": "boc",
+      "bankName": "中国银行",
+      "label": "中银理财",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.0008,
+        "minimumCny": 40,
+        "maximumCny": 208
+      },
+      "telegraphFeeUsCny": 120,
+      "rawFeeText": "汇款金额的0.08%,最低40元/笔,最高208元/笔",
+      "rawTelegraphText": "港澳台:64元/笔; 其余:120元/笔",
+      "officialUrl": null,
+      "remarks": "中银理财级客户在网点柜台、智能柜台和网上银行渠道向境外他行汇款享受普通客户收费标准上8折优惠，手机银行渠道7.2折优惠。\n\n在网点柜台、智能柜台和网上银行渠道向境外中行汇款享受普通客户收费标准上6.4折优惠，手机银行渠道全免。\n\n来源：上海分行微信公众号"
+    },
+    {
+      "id": "boc-2-666e-901a-5ba2-6237",
+      "bankId": "boc",
+      "bankName": "中国银行",
+      "label": "普通客户",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.001,
+        "minimumCny": 50,
+        "maximumCny": 260
+      },
+      "telegraphFeeUsCny": 150,
+      "rawFeeText": "汇款金额的0.10%,最低50元/笔,最高260元/笔",
+      "rawTelegraphText": "港澳台:80元/笔; 其余:150元/笔",
+      "officialUrl": "http://pic.bankofchina.com/bocappd/pricelist/index.html?ps=res&dt=201507&sid=P020150715280352822927",
+      "remarks": "2025年1月15日中银APP显示往境外（香港）同名账户汇款手续费电报费仍然全免\n\n2024年11月1日经测试得知 中国银行国内手机银行汇中国银行澳洲的学生账户每笔汇款中国银行澳洲不再免费入账 现每笔汇款收取5澳元\n\n2021年1月1日至2021年12月31日,中国银行手机银行、网上银行个人客户,外币跨境汇款（向境外中行汇款）,手续费及电讯费免费;外币跨境汇款（向境外他行汇款）,在柜台向境外他行汇款收费标准上进行手续费及电讯费9折优惠。链接 \n\n今日（2020年1月1日）查询中国银行手机银行得知 中国银行手机银行汇中国银行海外分支0手续费电报费的优惠延续到2020年12月31日 链接 \n\n今日（2019年4月30日）查看免费是针对于中行海外分支机构汇款，其他境外银行9折优惠，而非以下所说全免费。中国银行澳洲收10澳元入账手续费 学生账户豁免此手续费链接\n\n今日（2019年4月2日）中国银行手机银行app访问国际汇款页面，显示0手续费电报费的优惠还在继续。但是官网上并没有更新。现在根据官网显示此优惠将持续到2019年6月30日。\n\n通过中行手机银行向境外中行汇款到19年3月31日免手续费和电报费:链接\n\n2018年12月, 工作日下午3点通过中国银行手机银行汇中国银行澳洲学生账户, 第二天早上6点多收到, 全额到账, 无任何手续费"
+    },
+    {
+      "id": "cib-0-5bf0-5b87-4eba-751f-501f-8bb0-5361-2f",
+      "bankId": "cib",
+      "bankName": "兴业银行",
+      "label": "寰宇人生借记卡/寰宇通菁资卡",
+      "feeRule": {
+        "kind": "free",
+        "percent": 0,
+        "minimumCny": 0,
+        "maximumCny": 0
+      },
+      "telegraphFeeUsCny": 50,
+      "rawFeeText": "免费",
+      "rawTelegraphText": "50元/笔",
+      "officialUrl": "https://www.cib.com.cn/cn/aboutCIB/about/charges/adjustment/combined.html",
+      "remarks": "寰宇人生借记卡、寰宇通菁资卡内存款余额达到等值5000元人民币（含）的，境外汇款手续费全免，报文电讯费50元/笔"
+    },
+    {
+      "id": "cib-1-666e-901a-5ba2-6237",
+      "bankId": "cib",
+      "bankName": "兴业银行",
+      "label": "普通客户",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.001,
+        "minimumCny": 50,
+        "maximumCny": 200
+      },
+      "telegraphFeeUsCny": 100,
+      "rawFeeText": "汇款金额的0.10%,最低50元/笔,最高200元/笔",
+      "rawTelegraphText": "100元/笔",
+      "officialUrl": "http://www.cib.com.cn/cn/aboutCIB/about/charges/adjustment/combined/foreign.html",
+      "remarks": null
+    },
+    {
+      "id": "cib-2-91d1-5361-5ba2-6237",
+      "bankId": "cib",
+      "bankName": "兴业银行",
+      "label": "金卡客户",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.0005,
+        "minimumCny": 50,
+        "maximumCny": 200
+      },
+      "telegraphFeeUsCny": 100,
+      "rawFeeText": "汇款金额的0.05%,最低50元/笔,最高200元/笔",
+      "rawTelegraphText": "100元/笔",
+      "officialUrl": "http://www.cib.com.cn/cn/aboutCIB/about/charges/adjustment/combined/foreign.html",
+      "remarks": null
+    },
+    {
+      "id": "cib-3-767d-91d1-9ed1-91d1-5ba2-6237",
+      "bankId": "cib",
+      "bankName": "兴业银行",
+      "label": "白金黑金客户",
+      "feeRule": {
+        "kind": "free",
+        "percent": 0,
+        "minimumCny": 0,
+        "maximumCny": 0
+      },
+      "telegraphFeeUsCny": 100,
+      "rawFeeText": "免费",
+      "rawTelegraphText": "100元/笔",
+      "officialUrl": "http://www.cib.com.cn/cn/aboutCIB/about/charges/adjustment/combined/foreign.html",
+      "remarks": "2018年3月14日办理兴业白金借记卡，咨询客服得知，如果希望减免费用账户必须要达标，即白金客户日均资产大于等于30万，每自然月最后一天进行本月资产计算，次月8日左右会在账户上体现，可以通过“兴业银行”手机银行-贵宾服务-积点查询-“当前借记卡客户层级”查看。另：通过兴业银行手机银行进行结售汇、境外转账，单笔5万美元以下不需要亲自去柜台办理。"
+    },
+    {
+      "id": "pab-0-666e-901a-5ba2-6237",
+      "bankId": "pab",
+      "bankName": "平安银行",
+      "label": "普通客户",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.001,
+        "minimumCny": 50,
+        "maximumCny": 500
+      },
+      "telegraphFeeUsCny": 210,
+      "rawFeeText": "汇款金额的0.10%,最低50元/笔,最高500元/笔",
+      "rawTelegraphText": "港澳台:80元/笔; 其余:210元/笔",
+      "officialUrl": "http://bank.pingan.com/geren/zifei/index.shtml",
+      "remarks": "2026年1月实际操作汇款后，平安口袋银行app里实际显示的电报费数额为210元\n\n境外汇出汇款手续费: 黄金客户五折；白金、钻石、私人银行客户免收. 如所有费用由汇款人承担，统一代收全额到账费RMB200/笔，账户行及中间行费用不再额外收取             \n\n境外汇出汇款邮电费: 白金、钻石、私人银行客户五折\n\n境外汇出汇款查询费: 私人银行客户免收"
+    },
+    {
+      "id": "hfb-0-666e-901a-5361",
+      "bankId": "hfb",
+      "bankName": "恒丰银行",
+      "label": "普通卡",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.001,
+        "minimumCny": 50,
+        "maximumCny": 300
+      },
+      "telegraphFeeUsCny": 200,
+      "rawFeeText": "汇款金额的0.10%,最低50元/笔,最高300元/笔",
+      "rawTelegraphText": "港澳:100元/笔; 其余:200元/笔",
+      "officialUrl": "https://hfbank.com.cn/gryw/fwzf/sflb/307466.shtml",
+      "remarks": null
+    },
+    {
+      "id": "hfb-1-8d35-5bbe-91d1-5361",
+      "bankId": "hfb",
+      "bankName": "恒丰银行",
+      "label": "贵宾金卡",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.0005,
+        "minimumCny": 25,
+        "maximumCny": 150
+      },
+      "telegraphFeeUsCny": 200,
+      "rawFeeText": "汇款金额的0.05%,最低25元/笔,最高150元/笔",
+      "rawTelegraphText": "港澳:100元/笔; 其余:200元/笔",
+      "officialUrl": "https://hfbank.com.cn/gryw/fwzf/sflb/307466.shtml",
+      "remarks": null
+    },
+    {
+      "id": "hfb-2-767d-91d1-5361",
+      "bankId": "hfb",
+      "bankName": "恒丰银行",
+      "label": "白金卡",
+      "feeRule": {
+        "kind": "free",
+        "percent": 0,
+        "minimumCny": 0,
+        "maximumCny": 0
+      },
+      "telegraphFeeUsCny": 200,
+      "rawFeeText": "免费",
+      "rawTelegraphText": "港澳:100元/笔; 其余:200元/笔",
+      "officialUrl": "https://hfbank.com.cn/gryw/fwzf/sflb/307466.shtml",
+      "remarks": null
+    },
+    {
+      "id": "scb-0-4f18-9038-7406-8d22-5ba2-6237-28-6e23",
+      "bankId": "scb",
+      "bankName": "渣打银行",
+      "label": "优逸理财客户(渣打全球内部同名汇款)",
+      "feeRule": {
+        "kind": "free",
+        "percent": 0,
+        "minimumCny": 0,
+        "maximumCny": 0
+      },
+      "telegraphFeeUsCny": 0,
+      "rawFeeText": "免费",
+      "rawTelegraphText": "免费",
+      "officialUrl": "https://av.sc.com/cn/content/docs/cn-cb-tariff-zh.pdf",
+      "remarks": "中间代理行费用（如选择由汇款人承担） 每笔人民币200元"
+    },
+    {
+      "id": "scb-1-4f18-9038-7406-8d22-5ba2-6237",
+      "bankId": "scb",
+      "bankName": "渣打银行",
+      "label": "优逸理财客户",
+      "feeRule": {
+        "kind": "free",
+        "percent": 0,
+        "minimumCny": 0,
+        "maximumCny": 0
+      },
+      "telegraphFeeUsCny": 120,
+      "rawFeeText": "免费",
+      "rawTelegraphText": "120元/笔",
+      "officialUrl": "https://av.sc.com/cn/content/docs/cn-cb-tariff-zh.pdf",
+      "remarks": "中间代理行费用（如选择由汇款人承担）每笔人民币200元"
+    },
+    {
+      "id": "scb-2-4e2a-4eba-7406-8d22-5ba2-6237",
+      "bankId": "scb",
+      "bankName": "渣打银行",
+      "label": "个人理财客户",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.001,
+        "minimumCny": 100,
+        "maximumCny": 500
+      },
+      "telegraphFeeUsCny": 120,
+      "rawFeeText": "汇款金额的0.10%,最低100元/笔,最高500元/笔",
+      "rawTelegraphText": "120元/笔",
+      "officialUrl": "https://av.sc.com/cn/content/docs/cn-cb-tariff-zh.pdf",
+      "remarks": "中间代理行费用：（如选择由汇款人承担） 每笔人民币200元"
+    },
+    {
+      "id": "scb-3-4f18-5148-7406-8d22-5ba2-6237",
+      "bankId": "scb",
+      "bankName": "渣打银行",
+      "label": "优先理财客户",
+      "feeRule": {
+        "kind": "free",
+        "percent": 0,
+        "minimumCny": 0,
+        "maximumCny": 0
+      },
+      "telegraphFeeUsCny": 0,
+      "rawFeeText": "免费",
+      "rawTelegraphText": "免费",
+      "officialUrl": "https://av.sc.com/cn/content/docs/cn-cb-tariff-zh.pdf",
+      "remarks": "中间代理行费用（如选择由汇款人承担）每笔人民币200元"
+    },
+    {
+      "id": "bob-0-666e-901a-5ba2-6237",
+      "bankId": "bob",
+      "bankName": "北京银行",
+      "label": "普通客户",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.001,
+        "minimumCny": 20,
+        "maximumCny": 200
+      },
+      "telegraphFeeUsCny": 100,
+      "rawFeeText": "汇款金额的0.10%,最低20元/笔,最高200元/笔",
+      "rawTelegraphText": "100元/笔",
+      "officialUrl": "https://www.bankofbeijing.com.cn/personal/sfbz",
+      "remarks": "美元全额到账收到200元/笔，但暂不收取"
+    },
+    {
+      "id": "icbc-0-666e-901a-5ba2-6237-7535-5b50-6e20-9053",
+      "bankId": "icbc",
+      "bankName": "中国工商银行",
+      "label": "普通客户电子渠道",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.0008,
+        "minimumCny": 40,
+        "maximumCny": 208
+      },
+      "telegraphFeeUsCny": 100,
+      "rawFeeText": "汇款金额的0.08%,最低40元/笔,最高208元/笔",
+      "rawTelegraphText": "港澳台:80元/笔; 其余:100元/笔",
+      "officialUrl": "http://www.icbc.com.cn/icbc/%E9%87%91%E8%9E%8D%E4%BF%A1%E6%81%AF/%E8%B5%84%E8%B4%B9%E5%85%AC%E5%91%8A/%E4%B8%AD%E5%9B%BD%E5%B7%A5%E5%95%86%E9%93%B6%E8%A1%8C%E6%9C%8D%E5%8A%A1%E4%BB%B7%E7%9B%AE%E8%A1%A8%E7%94%B5%E5%AD%90%E9%93%B6%E8%A1%8C2012%E7%89%88.htm",
+      "remarks": "在 \"汇款金额的0.10%,最低50元/笔,最高260元/笔\" 的基础上打8折\n\n工银速汇，是工行独有的汇款产品。对境外有工行机构的国家和地区，包括42个国家和地区，电子渠道汇款均自动识别为工银速汇和工银速汇转汇。无工行机构的国家汇款，则为SWIFT汇款。\n\n优惠1:对于汇往境外他行的电汇（工银速汇转汇），部分地区免电报费、手续费8折。部分地区包括汇往美国的美元，澳大利亚的澳元，加拿大五大行的加元，香港地区的港币、美元、欧元，日本的日元，新西兰的新西兰元，新加坡地区的新币。\n\n优惠2:对于汇往境外工行的电汇，免电报费、手续费5折。使用手机银行汇款则同时减免手续费（就是全免费）。\n\n参考链接网友相关讨论\n\n官方说明\n\n使用工银速汇免电报费，电子渠道貌似会自动使用工银速汇，支持的地区不确定，我向香港中银汇是免了，看上面的讨论连接美国也有免的。工银速汇到达收款行不是电汇汇入(Inward Telegraphic Transfer)形式进入，可以省去收款行的处理费。\n\n2月底从国内工行通过工银速汇汇到澳洲anz，6000澳元实际到账5980澳元，anz显示未收取手续费，猜测手续费为工银澳洲悉尼分行收取，国内端收40人民币，anz客户端显示为international deposit。\n\n在工商银行手机银行境外汇款里看到似乎就汇去英国的英镑、汇去美国的美元、加拿大的加元和澳洲的澳元可以有速汇转汇。\n\n2019年2月初汇到国内代开户的中国银行澳洲学生账户（没有inward telegraph fee）昨天激活后发现仍然被收取18澳元费用 猜测是工行澳洲收取 显示本地清算\n\n2019年11月，手机APP，工银速汇，BMO蒙特利尔银行，汇款11000加币，手续费46.62元人民币，免电报费，周六上午汇款周一晚到账，到账10990加元，又扣落地费14加元，总费用：46.62元人民币+24加元\n\n通过工行手机银行得知 现在工行手机银行汇工行境外分支机构不需要电报费 收取100人民币一笔的手续费 部分工行境外机构会额外收取入帐手续费\n\n2020年4月下旬亲测电子渠道汇款至台湾，被收取电报费100元，而非上述80元."
+    },
+    {
+      "id": "icbc-1-666e-901a-5ba2-6237",
+      "bankId": "icbc",
+      "bankName": "中国工商银行",
+      "label": "普通客户",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.001,
+        "minimumCny": 50,
+        "maximumCny": 260
+      },
+      "telegraphFeeUsCny": 150,
+      "rawFeeText": "汇款金额的0.10%,最低50元/笔,最高260元/笔",
+      "rawTelegraphText": "港澳:80元/笔; 其余:150元/笔",
+      "officialUrl": "http://www.icbc.com.cn/icbc/%E9%87%91%E8%9E%8D%E4%BF%A1%E6%81%AF/%E8%B5%84%E8%B4%B9%E5%85%AC%E5%91%8A/%E4%B8%AD%E5%9B%BD%E5%B7%A5%E5%95%86%E9%93%B6%E8%A1%8C%E6%9C%8D%E5%8A%A1%E4%BB%B7%E7%9B%AE%E8%A1%A8%E7%94%B5%E5%AD%90%E9%93%B6%E8%A1%8C2012%E7%89%88.htm",
+      "remarks": "手续费：电子银行8折，手机银行免费\n\n2019/04/30 实测手机银行汇款需要收费，而非↑所言之免费。\n\n2021/02/22补充：1.向境外他行汇款电子渠道（包括网银和手机银行）8折优惠；\n\n      2.向境外工行汇款网上银行渠道5折优惠，手机银行免费。\n\n美元全额到帐加收25美元/笔。\n\n钞转汇：美元、港币、英镑、欧元按当日外汇牌价卖出价折算百分率收取，其它货币按交易金额的1% - 3%收取"
+    },
+    {
+      "id": "alipay-bos-0-666e-901a-5ba2-6237",
+      "bankId": "alipay-bos",
+      "bankName": "支付宝上银汇款",
+      "label": "普通客户",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.005,
+        "minimumCny": 100,
+        "maximumCny": 250
+      },
+      "telegraphFeeUsCny": 0,
+      "rawFeeText": "汇款金额的0.50%,最低100元/笔,最高250元/笔",
+      "rawTelegraphText": "免费",
+      "officialUrl": "https://help.alipay.com/lab/help_detail.htm?help_id=441215",
+      "remarks": "2024年10月10日测试得知，支付宝国际汇款已恢复，但是合作商变成了金城银行。单笔最多5W人民币等值外币，可保证全额到账，每月最多5笔，年度限额30W人民币。国内端同样是金城银行处理的国内版熊猫速汇，同样单笔和年度限额，但是手续费每笔固定80人民币，更实惠。"
+    },
+    {
+      "id": "bocom-0-666e-901a",
+      "bankId": "bocom",
+      "bankName": "交通银行",
+      "label": "普通",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.001,
+        "minimumCny": 20,
+        "maximumCny": 250
+      },
+      "telegraphFeeUsCny": 150,
+      "rawFeeText": "汇款金额的0.10%,最低20元/笔,最高250元/笔",
+      "rawTelegraphText": "港澳台:80元/笔; 其余:150元/笔",
+      "officialUrl": "http://www.bankcomm.com/BankCommSite/html/fwml/index.html",
+      "remarks": "网银汇款千分之0.5 最低20元最高100元，免收电报费，优惠至2017年12月31日。电脑版UKEY数字证书可以网上操作，仅限持卡客户开户分行已开通个人网银汇出汇款客户。\n\n收费标准见89页和94页。\n\n出国金融借记卡持卡客户个人汇出汇款柜面渠道免收电报费，按千分之0.5收取 最低20元最高100元。优惠到2017年12月31日。\n\n(2019-01-30) 通过手机银行测试 现在继续不收取电报费\n\n(2020-02-14) 手机银行和网银测试，不再减免电报费"
+    },
+    {
+      "id": "hxb-0-666e-901a",
+      "bankId": "hxb",
+      "bankName": "华夏银行",
+      "label": "普通",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.001,
+        "minimumCny": 20,
+        "maximumCny": 200
+      },
+      "telegraphFeeUsCny": 80,
+      "rawFeeText": "汇款金额的0.10%,最低20元/笔,最高200元/笔",
+      "rawTelegraphText": "80元/笔",
+      "officialUrl": "https://www.hxb.com.cn/jrhx/khfw/zxgg/2025/12/133395.shtml",
+      "remarks": "对私客户通过我行手机银行、网银渠道办理汇出汇款业务手续费5折优惠。 优惠有效期：2019年8月1日至2020年7月31日  汇出汇款收费上下限不变\n\n（该信息已过期：对私客户免费，优惠有效期：2018年8月1日至2019年7月31日 实测手续费、电报费全免，全额到账加收25美元，建议咨询网点确认。咨询客服后得知除了海口分行以外不收任何手续费和电报费）\n\n网友使用记录：\n\n今天(2019-01-30) 亲自到网点确认过 目前无法通过电子渠道汇款 只能在柜台汇款\n\n今天（2019-04-26）致电后确认无手续费、电报费，全额到账需加收30美元。"
+    },
+    {
+      "id": "nbcb-0-666e-901a-5ba2-6237",
+      "bankId": "nbcb",
+      "bankName": "宁波银行",
+      "label": "普通客户",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.001,
+        "minimumCny": 20,
+        "maximumCny": 200
+      },
+      "telegraphFeeUsCny": 150,
+      "rawFeeText": "汇款金额的0.10%,最低20元/笔,最高200元/笔",
+      "rawTelegraphText": "港澳台:80元/笔; 其余:150元/笔",
+      "officialUrl": "http://www.nbcb.com.cn/home_page/jrxx/fwsfcx/",
+      "remarks": "自2021年12月1日起，白金卡、钻石卡、私银卡的个人客户，或上月日均资产≥30万的个人客户享受8折优惠"
+    },
+    {
+      "id": "jsb-0-666e-901a-5ba2-6237",
+      "bankId": "jsb",
+      "bankName": "江苏银行",
+      "label": "普通客户",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.001,
+        "minimumCny": 20,
+        "maximumCny": 250
+      },
+      "telegraphFeeUsCny": 80,
+      "rawFeeText": "汇款金额的0.10%,最低20元/笔,最高250元/笔",
+      "rawTelegraphText": "80元/笔",
+      "officialUrl": "http://www.jsbchina.cn/CN/gryw/pgrwh/gjwhk/index.html?flag=2",
+      "remarks": "如以外币现钞办理汇款，需支付相应的钞汇差价费。"
+    },
+    {
+      "id": "spdb-0-666e-901a-5ba2-6237",
+      "bankId": "spdb",
+      "bankName": "浦发银行",
+      "label": "普通客户",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.001,
+        "minimumCny": 50,
+        "maximumCny": 250
+      },
+      "telegraphFeeUsCny": 80,
+      "rawFeeText": "汇款金额的0.10%,最低50元/笔,最高250元/笔",
+      "rawTelegraphText": "80元/笔",
+      "officialUrl": "http://www.spdb.com.cn/home/standard_tariff/fwjgml/201607/P020170726603443980998.pdf",
+      "remarks": "若为现钞汇款，另收取钞折汇手续费1%\n\n汇出汇款修改：等值人民币 100 元/笔\n\n汇出汇款挂失止付（票汇）：等值人民币 150元/笔 \n\n经手机银行测试: 汇往澳洲的澳元,英国的英镑,美国的美元,加拿大的加元会显示输入当地清算网络代码而不是swift,可能汇款速度会加速\n\n2019年8月1日-12月31日 白金及钻石客户跨境汇款0手续费，只收80元人民币电报费，私人银行0手续费，0电报费。"
+    },
+    {
+      "id": "cmbc-0-666e-901a-5ba2-6237",
+      "bankId": "cmbc",
+      "bankName": "中国民生银行",
+      "label": "普通客户",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.001,
+        "minimumCny": 50,
+        "maximumCny": 200
+      },
+      "telegraphFeeUsCny": 200,
+      "rawFeeText": "汇款金额的0.10%,最低50元/笔,最高200元/笔",
+      "rawTelegraphText": "港澳台:100元/笔; 其余:200元/笔",
+      "officialUrl": "http://www.cmbc.com.cn/cs/Satellite?c=Page&cid=1378263044880&currentId=1384592498282&pagename=cmbc%2FPage%2FTP_AboutMs",
+      "remarks": "悠然客户每自然年前1笔免费，卓然和私银客户每自然年前3笔免费"
+    },
+    {
+      "id": "cmbc-1-666e-901a-5ba2-6237-7f51-4e0a-53ca-624b",
+      "bankId": "cmbc",
+      "bankName": "中国民生银行",
+      "label": "普通客户网上及手机银行",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.0005,
+        "minimumCny": 25,
+        "maximumCny": 100
+      },
+      "telegraphFeeUsCny": 100,
+      "rawFeeText": "汇款金额的0.05%,最低25元/笔,最高100元/笔",
+      "rawTelegraphText": "港澳台:50元/笔; 其余:100元/笔",
+      "officialUrl": "http://www.cmbc.com.cn/cs/Satellite?c=Page&cid=1378263044880&currentId=1384592498282&pagename=cmbc%2FPage%2FTP_AboutMs",
+      "remarks": null
+    },
+    {
+      "id": "psbc-0-666e-901a-5ba2-6237",
+      "bankId": "psbc",
+      "bankName": "邮储银行",
+      "label": "普通客户",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.0008,
+        "minimumCny": 20,
+        "maximumCny": 200
+      },
+      "telegraphFeeUsCny": 70,
+      "rawFeeText": "汇款金额的0.08%,最低20元/笔,最高200元/笔",
+      "rawTelegraphText": "70元/笔",
+      "officialUrl": "http://www.psbc.com/portal/zh_CN/Home/Announcements/28543.html",
+      "remarks": "全额到帐，美元业务每笔20美元，欧元业务每笔17欧元"
+    },
+    {
+      "id": "citic-0-666e-901a-5ba2-6237",
+      "bankId": "citic",
+      "bankName": "中信银行",
+      "label": "普通客户",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.001,
+        "minimumCny": 20,
+        "maximumCny": 180
+      },
+      "telegraphFeeUsCny": 80,
+      "rawFeeText": "汇款金额的0.10%,最低20元/笔,最高180元/笔",
+      "rawTelegraphText": "80元/笔",
+      "officialUrl": "https://www.citicbank.com/common/financialnews/jmfwb2/201606/P020220428562828064315.pdf",
+      "remarks": "通过柜台汇往海外(非港澳台)电报费为100元，手续费最高收取250元；通过电子渠道电报费则为80元，手续费最高收取180元。\n\n全额到账收取200元/笔"
+    },
+    {
+      "id": "abc-0-666e-901a-5ba2-6237",
+      "bankId": "abc",
+      "bankName": "中国农业银行",
+      "label": "普通客户",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.001,
+        "minimumCny": 20,
+        "maximumCny": 200
+      },
+      "telegraphFeeUsCny": 80,
+      "rawFeeText": "汇款金额的0.10%,最低20元/笔,最高200元/笔",
+      "rawTelegraphText": "80元/笔",
+      "officialUrl": "http://www.95599.cn/cn/PublicPlate/sfbz/fwjgbz/201512/t20151223_815874.htm",
+      "remarks": null
+    },
+    {
+      "id": "ccb-0-666e-901a-5ba2-6237",
+      "bankId": "ccb",
+      "bankName": "中国建设银行",
+      "label": "普通客户",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.001,
+        "minimumCny": 20,
+        "maximumCny": 300
+      },
+      "telegraphFeeUsCny": 80,
+      "rawFeeText": "汇款金额的0.10%,最低20元/笔,最高300元/笔",
+      "rawTelegraphText": "80元/笔",
+      "officialUrl": "http://store.ccb.com/cn/html1/office/jiamubiao/personal/index20.html",
+      "remarks": "陆港通龙卡建行汇建行亚洲0.1%手续费，无电报费，工作日瞬间到账, 建行亚洲不收取汇入手续费。\n\n经网银测试建行汇建行亚洲单笔最多38999港元下不会出现汇款国际收支申报 39000港元及以上会出现一般国际汇款会出现的国际收支申报。不需要填写国际收支申报的金额会随着汇率变化而略微变化，约5000美元等值。\n\n全额到帐加收25美金\n\n经测试其他外币跨境汇款5000美元等值左右 以下也不会出现国际收支申报"
+    },
+    {
+      "id": "ceb-0-666e-901a-5ba2-6237",
+      "bankId": "ceb",
+      "bankName": "中国光大银行",
+      "label": "普通客户",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.001,
+        "minimumCny": 20,
+        "maximumCny": 250
+      },
+      "telegraphFeeUsCny": 150,
+      "rawFeeText": "汇款金额的0.10%,最低20元/笔,最高250元/笔",
+      "rawTelegraphText": "港:80元/笔; 其余:150元/笔",
+      "officialUrl": "http://www.cebbank.com/site/fwjgml34/21976028/b848ff0b-5.html",
+      "remarks": "1. 钞转汇费用 = 现钞金额 - 现钞金额 * 钞买价 / 汇卖价\n\n2. 阳光出国+卡优惠期内(2017.1.1 ~ 2018.12.31)免收电报费\n\n3. 2019.6.25 办理的出国金融联名卡，汇款实测免电报费，只收手续费，但是到香港的中转费扣了200港币。\n\n2019年10月8日早上光大银行网上银行汇款5201澳元到澳洲up银行（本迪戈和阿德莱德银行的子公司）国内段收取25.08元人民币手续费，10月9日中午收到汇款，一共扣了17澳元澳元手续费（其中up银行国际汇款入账收取2澳元手续费）"
+    },
+    {
+      "id": "ceb-1-8d22-5bcc-5ba2-6237",
+      "bankId": "ceb",
+      "bankName": "中国光大银行",
+      "label": "财富客户",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.001,
+        "minimumCny": 20,
+        "maximumCny": 250
+      },
+      "telegraphFeeUsCny": 0,
+      "rawFeeText": "汇款金额的0.10%,最低20元/笔,最高250元/笔",
+      "rawTelegraphText": "免费",
+      "officialUrl": "http://www.cebbank.com/site/fwjgml34/21976028/b848ff0b-5.html",
+      "remarks": "财富客户指在光大金额资产连续三个月日均100万元以上的客户"
+    },
+    {
+      "id": "ceb-2-51c6-79c1-5ba2-6237",
+      "bankId": "ceb",
+      "bankName": "中国光大银行",
+      "label": "准私客户",
+      "feeRule": {
+        "kind": "free",
+        "percent": 0,
+        "minimumCny": 0,
+        "maximumCny": 0
+      },
+      "telegraphFeeUsCny": 0,
+      "rawFeeText": "免费",
+      "rawTelegraphText": "免费",
+      "officialUrl": "http://www.cebbank.com/site/fwjgml34/21976028/b848ff0b-5.html",
+      "remarks": "准私客户指在光大银行金额资产连续三个月日均500万元以上的客户"
+    },
+    {
+      "id": "cgb-0-666e-901a-5ba2-6237",
+      "bankId": "cgb",
+      "bankName": "广发银行",
+      "label": "普通客户",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.001,
+        "minimumCny": 20,
+        "maximumCny": 200
+      },
+      "telegraphFeeUsCny": 50,
+      "rawFeeText": "汇款金额的0.10%,最低20元/笔,最高200元/笔",
+      "rawTelegraphText": "50元/笔",
+      "officialUrl": "http://www.cgbchina.com.cn/Info/19171354",
+      "remarks": "美元全额到账另收200元/笔, 欧元全额到账另收260元/笔\n\n以上收费为个人汇款。对公收费为: 汇出汇款（含跨境人民币）按汇出额1‰收取，最高不超过1000元，最低不少于100元。收电报费：境内10元/笔，境外100元/笔。"
+    },
+    {
+      "id": "bos-0-666e-901a-5ba2-6237",
+      "bankId": "bos",
+      "bankName": "上海银行",
+      "label": "普通客户",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.001,
+        "minimumCny": 50,
+        "maximumCny": 500
+      },
+      "telegraphFeeUsCny": 80,
+      "rawFeeText": "汇款金额的0.10%,最低50元/笔,最高500元/笔",
+      "rawTelegraphText": "80元/笔",
+      "officialUrl": "http://www.bosc.cn/zh/gryw/gryw_whyw/gryw_whyw_whhk/index.shtml",
+      "remarks": null
+    },
+    {
+      "id": "hsbc-0-666e-901a-5ba2-6237",
+      "bankId": "hsbc",
+      "bankName": "汇丰银行",
+      "label": "普通客户",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.001,
+        "minimumCny": 100,
+        "maximumCny": 500
+      },
+      "telegraphFeeUsCny": 120,
+      "rawFeeText": "汇款金额的0.10%,最低100元/笔,最高500元/笔",
+      "rawTelegraphText": "120元/笔",
+      "officialUrl": "https://cdn.hsbc.com.cn/content/dam/hsbc/cn/docs/document-download/%E8%B4%A6%E6%88%B7%E5%92%8C%E6%9C%8D%E5%8A%A1%E8%B4%B9%E7%8E%87-v2.pdf",
+      "remarks": null
+    },
+    {
+      "id": "cmb-0-91d1-8475-82b1-5ba2-6237",
+      "bankId": "cmb",
+      "bankName": "招商银行",
+      "label": "金葵花客户",
+      "feeRule": {
+        "kind": "free",
+        "percent": 0,
+        "minimumCny": 0,
+        "maximumCny": 0
+      },
+      "telegraphFeeUsCny": 100,
+      "rawFeeText": "免费",
+      "rawTelegraphText": "100元/笔",
+      "officialUrl": "https://fin.paas.cmbchina.com/fininfo/serviceprice",
+      "remarks": "网友提供: 经客服确认从上海发起往国内电报费20元，从广州发起汇款电报费收80元，从苏州发起汇款电报费收100元，上海发起汇款电报费20"
+    },
+    {
+      "id": "cmb-1-666e-901a-5ba2-6237",
+      "bankId": "cmb",
+      "bankName": "招商银行",
+      "label": "普通客户",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.001,
+        "minimumCny": 50,
+        "maximumCny": 280
+      },
+      "telegraphFeeUsCny": 100,
+      "rawFeeText": "汇款金额的0.10%,最低50元/笔,最高280元/笔",
+      "rawTelegraphText": "100元/笔",
+      "officialUrl": "https://fin.paas.cmbchina.com/fininfo/serviceprice",
+      "remarks": "本地修正规则，更新于 2026-07-18：普通客户手续费最低50元、最高280元；所有客户等级电报费100元。"
+    },
+    {
+      "id": "hxb-local-mobile-banking",
+      "bankId": "hxb",
+      "bankName": "华夏银行",
+      "label": "普通（手机银行）",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.0005,
+        "minimumCny": 20,
+        "maximumCny": 200
+      },
+      "telegraphFeeUsCny": 80,
+      "rawFeeText": "汇款金额的0.05%,最低20元/笔,最高200元/笔",
+      "rawTelegraphText": "80元/笔",
+      "officialUrl": "https://www.hxb.com.cn/jrhx/khfw/zxgg/2025/12/133395.shtml",
+      "remarks": "本地修正规则，更新于 2026-07-18：手机银行手续费按0.5‰收取，收费上下限沿用普通客户标准。"
+    },
+    {
+      "id": "cmb-local-gold-card",
+      "bankId": "cmb",
+      "bankName": "招商银行",
+      "label": "金卡客户",
+      "feeRule": {
+        "kind": "percentage",
+        "percent": 0.0005,
+        "minimumCny": 50,
+        "maximumCny": 280
+      },
+      "telegraphFeeUsCny": 100,
+      "rawFeeText": "汇款金额的0.05%,最低50元/笔,最高280元/笔",
+      "rawTelegraphText": "100元/笔",
+      "officialUrl": "https://fin.paas.cmbchina.com/fininfo/serviceprice",
+      "remarks": "本地修正规则，更新于 2026-07-18：金卡客户手续费按0.5‰收取，最低50元、最高280元；电报费100元。"
+    }
+  ]
+}
