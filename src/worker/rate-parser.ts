@@ -22,53 +22,9 @@ async function readRows(
   tableId: string,
   lastCellIndex: number,
 ): Promise<string[][]> {
-  const idMarker = `id="${tableId}"`;
-  const reader = response.body?.getReader();
-  if (!reader) return [];
-
-  const decoder = new TextDecoder();
-  let fragment = "";
-  let tableFound = false;
-
-  try {
-    while (true) {
-      const { done, value } = await reader.read();
-      fragment += decoder.decode(value, { stream: !done });
-
-      if (!tableFound) {
-        const idIndex = fragment.indexOf(idMarker);
-        if (idIndex >= 0) {
-          const tableStart = fragment.lastIndexOf("<table", idIndex);
-          if (tableStart >= 0) {
-            fragment = fragment.slice(tableStart);
-            tableFound = true;
-          }
-        }
-      }
-
-      if (tableFound) {
-        const tableClose = fragment.indexOf("</table>");
-        if (tableClose >= 0) {
-          fragment = fragment.slice(0, tableClose + "</table>".length);
-          await reader.cancel();
-          break;
-        }
-      }
-
-      if (done) break;
-    }
-  } finally {
-    reader.releaseLock();
-  }
-
-  if (!tableFound || !fragment.endsWith("</table>")) return [];
-
-  const tableResponse = new Response(
-    fragment,
-    { headers: { "Content-Type": "text/html; charset=utf-8" } },
-  );
   const rows: string[][] = [];
   let insideTable = false;
+  let tableComplete = false;
   let currentCells: string[] | null = null;
   let cellIndex = -1;
   const transformed = new HTMLRewriter()
@@ -78,6 +34,7 @@ async function readRows(
         insideTable = true;
         table.onEndTag(() => {
           insideTable = false;
+          tableComplete = true;
           currentCells = null;
         });
       },
@@ -105,9 +62,19 @@ async function readRows(
         }
       },
     })
-    .transform(tableResponse);
+    .transform(response);
 
-  await transformed.arrayBuffer();
+  const reader = transformed.body?.getReader();
+  if (!reader) return [];
+  try {
+    while (!tableComplete) {
+      const { done } = await reader.read();
+      if (done) break;
+    }
+    if (tableComplete) await reader.cancel();
+  } finally {
+    reader.releaseLock();
+  }
   return rows;
 }
 
