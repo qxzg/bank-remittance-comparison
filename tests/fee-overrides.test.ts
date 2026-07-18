@@ -1,4 +1,4 @@
-import { applyFeeOverrides } from "../src/server/fee-overrides";
+import { applyFeeOverrides } from "../scripts/fee-overrides";
 import type { FeeTier } from "../src/shared/types";
 
 function percentageTier(

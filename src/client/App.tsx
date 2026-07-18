@@ -31,7 +31,7 @@ import type {
 
 const DEFAULT_AMOUNT = "10000";
 const QUICK_AMOUNTS = [1_000, 5_000, 10_000, 20_000, 50_000, 100_000] as const;
-const REFRESH_INTERVAL_MS = 60_000;
+const REFRESH_INTERVAL_MS = 5 * 60_000;
 const STORAGE_KEY = "bank-remittance-selected-tiers-v1";
 
 const cnyFormatter = new Intl.NumberFormat("zh-CN", {
@@ -191,7 +191,9 @@ export function App() {
   const fetchRates = useCallback(async (force = false) => {
     setRefreshing(true);
     try {
-      const response = await fetch(`/api/rates${force ? "?refresh=1" : ""}`);
+      const response = await fetch(`/api/rates${force ? "?refresh=1" : ""}`, {
+        cache: force ? "reload" : "default",
+      });
       const data = (await response.json()) as RatesResponse | { error: string };
       if (!response.ok || "error" in data) {
         throw new Error("error" in data ? data.error : "牌价更新失败");
@@ -214,7 +216,7 @@ export function App() {
       try {
         const [rateResponse, feeResponse] = await Promise.all([
           fetch("/api/rates"),
-          fetch("/api/fees", { cache: "no-store" }),
+          fetch("/data/fees.json"),
         ]);
         const rateData = (await rateResponse.json()) as
           | RatesResponse
@@ -246,7 +248,10 @@ export function App() {
       }
     }
     void load();
-    const interval = window.setInterval(() => void fetchRates(), REFRESH_INTERVAL_MS);
+    const interval = window.setInterval(
+      () => void fetchRates(),
+      REFRESH_INTERVAL_MS,
+    );
     return () => {
       active = false;
       window.clearInterval(interval);
@@ -316,7 +321,7 @@ export function App() {
             </div>
             <div className="hidden items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs text-slate-300 sm:flex">
               <Radio className="size-3.5 text-emerald-400" />
-              牌价每 60 秒更新
+              牌价每 5 分钟更新
             </div>
           </nav>
 
@@ -448,7 +453,7 @@ export function App() {
               </span>
               {rates?.cached && (
                 <span className="rounded-full bg-blue-50 px-2.5 py-1 font-semibold text-blue-700">
-                  30 秒缓存
+                  最新缓存
                 </span>
               )}
               {rates?.stale && (

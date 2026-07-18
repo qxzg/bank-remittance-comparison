@@ -1,48 +1,8 @@
 import {
-  parseBeijingBankRateHtml,
   parseFeeRule,
   parseFeesHtml,
-  parseNationalRatesHtml,
   parseUsTelegraphFee,
-} from "../src/server/parsers";
-
-describe("rate parsers", () => {
-  it("parses the USD cash-remittance selling column", () => {
-    const html = `
-      <table id="bank_rate_usd"><tbody>
-        <tr>
-          <td>中国银行</td><td>6.70</td><td>6.60</td>
-          <td>6.812345 <i>best</i></td><td>6.90</td><td>07月18日 10:20</td>
-        </tr>
-        <tr><td>空牌价银行</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td></tr>
-      </tbody></table>`;
-
-    expect(parseNationalRatesHtml(html)).toEqual([
-      expect.objectContaining({
-        bankId: "boc",
-        bankName: "中国银行",
-        sellRateCnyPerUsd: 6.812345,
-        publishedAtText: "07月18日 10:20",
-      }),
-    ]);
-  });
-
-  it("extracts Beijing Bank from the city table", () => {
-    const html = `
-      <table id="bank_rate"><tbody>
-        <tr><td>中国银行</td><td>全国性</td><td>6.7</td><td>6.6</td><td>6.81</td><td>6.9</td><td>07月18日 10:00</td></tr>
-        <tr><td>北京银行</td><td>地方性</td><td>6.7</td><td>6.6</td><td>6.79</td><td>6.9</td><td>07月18日 10:10</td></tr>
-      </tbody></table>`;
-
-    expect(parseBeijingBankRateHtml(html)).toEqual(
-      expect.objectContaining({
-        bankId: "bob",
-        bankName: "北京银行",
-        sellRateCnyPerUsd: 6.79,
-      }),
-    );
-  });
-});
+} from "../scripts/fee-parser";
 
 describe("fee parsers", () => {
   it("parses percentage limits and destination fees", () => {
@@ -95,4 +55,3 @@ describe("fee parsers", () => {
     );
   });
 });
-

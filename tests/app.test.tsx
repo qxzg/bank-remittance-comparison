@@ -92,7 +92,7 @@ describe("comparison UI", () => {
     vi.stubGlobal(
       "fetch",
       vi.fn((input: RequestInfo | URL) =>
-        String(input).includes("/api/fees")
+        String(input).includes("/data/fees.json")
           ? jsonResponse(fees)
           : jsonResponse(rates),
       ),
@@ -129,5 +129,19 @@ describe("comparison UI", () => {
     expect(
       screen.getByRole("button", { name: "快速选择 5000 美元" }),
     ).toHaveAttribute("aria-pressed", "true");
+  });
+
+  it("reloads the KV-backed rate path from the refresh button", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+    await screen.findAllByText("乙银行");
+
+    await user.click(screen.getByRole("button", { name: "刷新牌价" }));
+
+    await waitFor(() => {
+      expect(fetch).toHaveBeenCalledWith("/api/rates?refresh=1", {
+        cache: "reload",
+      });
+    });
   });
 });

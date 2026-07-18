@@ -1,4 +1,4 @@
-import type { FeeTier } from "../shared/types";
+import type { FeeTier } from "../src/shared/types";
 
 const LOCAL_NOTE = "本地修正规则，更新于 2026-07-18";
 const OFFICIAL_URLS: Record<string, string> = {

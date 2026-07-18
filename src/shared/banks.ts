@@ -1,4 +1,4 @@
-const BANK_ALIASES: Record<string, string> = {
+const BANK_ALIASES: Readonly<Record<string, string>> = {
   中国银行: "中国银行",
   工商银行: "中国工商银行",
   中国工商银行: "中国工商银行",
@@ -61,7 +61,11 @@ const BANK_IDS: Record<string, string> = {
 };
 
 export function normalizeWhitespace(value: string): string {
-  return value.replace(/\u00a0/g, " ").replace(/\s+/g, " ").trim();
+  return value
+    .replace(/&nbsp;/gi, " ")
+    .replace(/\u00a0/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 export function normalizeBankName(value: string): string {
@@ -86,4 +90,3 @@ export function makeTierId(bankId: string, index: number, label: string): string
     .join("-");
   return `${bankId}-${index}-${suffix}`;
 }
-

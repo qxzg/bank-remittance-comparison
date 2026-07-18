@@ -1,24 +1,13 @@
 import * as cheerio from "cheerio";
-import type { FeeRule, FeeTier, RateQuote } from "../shared/types";
+import type { FeeRule, FeeTier } from "../src/shared/types";
 import {
   getBankId,
   makeTierId,
   normalizeBankName,
   normalizeWhitespace,
-} from "./banks";
+} from "../src/shared/banks";
 
-export const NATIONAL_RATES_URL =
-  "https://www.kylc.com/bank/rmbfx.html?ccy=usd";
-export const BEIJING_RATES_URL =
-  "https://www.kylc.com/huilv/bank/perccy/usd/110100.html";
 export const FEES_URL = "https://www.kylc.com/bank/fees/tt.html";
-
-function parseNumber(value: string): number | null {
-  const clean = normalizeWhitespace(value).replace(/,/g, "");
-  if (!clean || clean === "--") return null;
-  const number = Number.parseFloat(clean);
-  return Number.isFinite(number) ? number : null;
-}
 
 export function parseFeeRule(rawText: string): FeeRule {
   const text = normalizeWhitespace(rawText);
@@ -122,54 +111,3 @@ export function parseFeesHtml(html: string): FeeTier[] {
 
   return tiers;
 }
-
-function parseRatesTable(
-  html: string,
-  selector: string,
-  source: RateQuote["source"],
-  sourceUrl: string,
-  columns: { sell: number; published: number },
-): RateQuote[] {
-  const $ = cheerio.load(html);
-  const rates: RateQuote[] = [];
-
-  $(`${selector} tbody tr`).each((_, row) => {
-    const cells = $(row).find("td");
-    const bankName = normalizeBankName(cells.eq(0).text());
-    const sellRate = parseNumber(cells.eq(columns.sell).text());
-    if (!bankName || sellRate === null) return;
-
-    rates.push({
-      bankId: getBankId(bankName),
-      bankName,
-      sellRateCnyPerUsd: sellRate,
-      publishedAtText: normalizeWhitespace(cells.eq(columns.published).text()),
-      source,
-      sourceUrl,
-    });
-  });
-
-  return rates;
-}
-
-export function parseNationalRatesHtml(html: string): RateQuote[] {
-  return parseRatesTable(
-    html,
-    "#bank_rate_usd",
-    "national",
-    NATIONAL_RATES_URL,
-    { sell: 3, published: 5 },
-  );
-}
-
-export function parseBeijingBankRateHtml(html: string): RateQuote | null {
-  const rates = parseRatesTable(
-    html,
-    "#bank_rate",
-    "beijing",
-    BEIJING_RATES_URL,
-    { sell: 4, published: 6 },
-  );
-  return rates.find((rate) => rate.bankName === "北京银行") ?? null;
-}
-
